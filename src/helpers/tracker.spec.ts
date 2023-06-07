@@ -26,7 +26,7 @@ describe("mostUsedIps", () => {
     expect(a.freq[0]).toBe("3");
   });
 
-  it.only("should only hold 100 ips", () => {
+  it("should only hold 100 ips", () => {
     for (let i = 0; i < 102; i++) {
       a.requestHandled(i + "");
     }
@@ -47,5 +47,16 @@ describe("mostUsedIps", () => {
     expect(a.ipMap.get("0")).toBe(4);
     a.clear();
     expect(a.freq.length).toBe(0);
+  });
+  it("should handle 20 million unique ipAddresses", async () => {
+    const start = new Date(); // crashes around 16m. Map can only hold that many keys
+    for (let i = 0; i < 2 * Math.pow(10, 7); i++) {
+      a.requestHandled(i + "");
+    }
+    console.log(
+      "that took:",
+      (new Date().getMilliseconds() - start.getMilliseconds()) / 1000,
+      "seconds"
+    );
   });
 });
