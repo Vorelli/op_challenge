@@ -1,9 +1,11 @@
+const Bigger = require("./BiggerMap");
+
 class MostUsed {
-  ipMap: Map<string, number>;
+  ipMap: typeof Bigger;
   freq: Array<string>;
 
   constructor() {
-    this.ipMap = new Map();
+    this.ipMap = new Bigger();
     this.freq = [];
   }
 

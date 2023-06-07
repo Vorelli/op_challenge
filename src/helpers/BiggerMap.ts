@@ -28,9 +28,13 @@ class BiggerMap {
     }
     if (this.len[this.len.length - 1] < this.max) {
       this.maps[this.maps.length - 1].set(k, v);
+      this.len[this.len.length - 1]++;
     } else {
       this.maps.push(new Map());
+      this.len.push(1);
       this.maps[this.maps.length - 1].set(k, v);
     }
   }
 }
+
+module.exports = BiggerMap;
