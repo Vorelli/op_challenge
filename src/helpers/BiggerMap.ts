@@ -26,14 +26,12 @@ class BiggerMap {
         return this.maps[i].set(k, v);
       }
     }
-    if (this.len[this.len.length - 1] < this.max) {
-      this.maps[this.maps.length - 1].set(k, v);
-      this.len[this.len.length - 1]++;
-    } else {
+    if (this.len[this.len.length - 1] >= this.max) {
       this.maps.push(new Map());
-      this.len.push(1);
-      this.maps[this.maps.length - 1].set(k, v);
+      this.len.push(0);
     }
+    this.len[this.len.length - 1]++;
+    this.maps[this.maps.length - 1].set(k, v);
   }
 }
 
