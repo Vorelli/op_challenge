@@ -1,7 +1,8 @@
 const MostUsed = require("./helpers/tracker");
-import express from "express";
+const express = require("express");
 
 const app = express();
+app.enable("trust proxy");
 const mostUsed = new MostUsed();
 
 app.get("/", (req: express.Request, res: express.Response) => {
@@ -18,4 +19,4 @@ app.get("/clear", (_req: express.Request, res: express.Response) => {
   res.json({ message: "Cleared!" });
 });
 
-export default app;
+module.exports = app;
