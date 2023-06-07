@@ -8,3 +8,7 @@ To Install:
 - `pnpm install`
 - `pnpm build`
 - `pnpm start`
+
+To Test:
+
+- `pnpm test`
